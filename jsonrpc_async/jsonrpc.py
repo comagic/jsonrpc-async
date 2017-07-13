@@ -38,7 +38,7 @@ class Server(jsonrpc_base.Server):
             return None
 
         try:
-            response_data = yield from response.json()
+            response_data = yield from response.json(content_type=None)
         except ValueError as value_error:
             raise TransportError('Cannot deserialize response body', message, value_error)
 
